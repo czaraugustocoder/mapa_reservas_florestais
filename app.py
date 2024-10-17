@@ -18,6 +18,8 @@ locations_path = os.path.join(current_working_directory, "UC_Estadual.shp.xlsx")
 
 geo_path = os.path.join(current_working_directory, "UC_Estadual.geojson")
 
+glebas_path = os.path.join(current_working_directory, "GLEBAS_AMAZONAS.geojson")
+
 st.title("RESERVAS FLORESTAIS DO AMAZONAS")
 
 st.sidebar.image(path_logo)
@@ -25,6 +27,15 @@ st.sidebar.image(path_logo)
 locations = pd.read_excel(locations_path)
 
 fig = folium.Map(location=[-4.699395, -62.155688], zoom_start=6.25)
+
+geo_json_map = json.load(open(glebas_path))
+folium.Choropleth(
+    geo_data = geo_json_map,
+    fill_color = "purple",
+    fill_opacity = 0.4,
+    line_color = "purple",
+    line_opacity = 0.9
+).add_to(fig)
 
 geo_json_map = json.load(open(geo_path))
 folium.Choropleth(
