@@ -59,7 +59,7 @@ dados_reserva = locations[['nome', 'categoria', 'uso']]
 # Adicionar um controle de camadas
 folium.LayerControl().add_to(fig)
 
-col1, col2 = st.columns([2, 1.25])
+col1, col2 = st.columns([2, 1])
 with col1:
     st.write("MAPA DAS RESERVAS FLORESTAIS")
     st_data = st_folium(fig, width=1000, height=700)
